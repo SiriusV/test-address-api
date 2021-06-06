@@ -1,0 +1,47 @@
+swagger: "2.0"
+info:
+  title: API Addresses
+  version: '0.1'
+host: "api.address.test"
+paths:
+  /fields:
+    get:
+      parameters:
+      - name: "countryId"
+        in: "query"
+        description: "ID страны"
+        required: true
+        type: "integer"
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Field"
+definitions:
+  Field:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      displayName:
+        type: "string"
+      orderNumber:
+        type: "integer"
+      validatorRules:
+        type: "array"
+        items:
+              $ref: "#/definitions/ValidatorRule"
+  ValidatorRule:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      pattern:
+        type: "string"
+      errorMessage:
+        type: "string"
+      
+
+
